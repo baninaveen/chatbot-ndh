@@ -4,7 +4,7 @@
   "description": "Facebook Chatbot for NextDoorHub",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "NextDoorHub | Bani Naveen",
   "license": "MIT",
