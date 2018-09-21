@@ -2,13 +2,18 @@
   "name": "chatbot-fb-ndh",
   "version": "1.0.0",
   "description": "Facebook Chatbot for NextDoorHub",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
   },
   "author": "NextDoorHub | Bani Naveen",
   "license": "MIT",
   "dependencies": {
+    "apiai": "^4.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "nodemon": "^1.18.4",
