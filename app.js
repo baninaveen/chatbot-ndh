@@ -190,6 +190,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				.then( r => r.json())
 				.then(data => {
 					let randNo = random_item(data);
+					console.log('Random',randNo);
 					fetch(data[randNo]['_links']['wp:featuredmedia'][0]['href'])
 					.then((result)=>{
 						let element = [
