@@ -189,7 +189,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 				.then( r => r.json())
 				.then(data => {
-					fetch(data[0]['wp:featuredmedia']['href'])
+					return fetch(data[0]['wp:featuredmedia']['href'])
 					.then((result)=>{
 						let element = [
 							{
@@ -210,9 +210,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							 ]      
 						   }
 						 ]
+						sendGenericMessage(sender, elements);	 
 					})
-					
-					sendGenericMessage(sender, elements);
 					// content.push({'title': data[i]['title']['rendered'],
 					// 			'link': data[i]['link']});
 					// // content += data[i]['link'];
