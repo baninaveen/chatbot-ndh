@@ -199,6 +199,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					console.log('Random',randOne);
 					fetch(String(data[randOne]['_links']['wp:featuredmedia'][0]['href']))
 					.then((result)=>{
+						console.log('Result', result);
 						let element = [
 							{
 							 "title":data[randOne]['title']['rendered'],
