@@ -186,12 +186,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			break;
 		
 		case "BlogActivity":
-			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
-				.then( r => r.json())
-				.then(data => {
-					// console.log(data[1]['title']['rendered']);
-					console.log(data.length);
-				});
+			let content = blogContent();
+			console.log('Content', content);
 			break;	
 		default:
 			//unhandled action, just send back the text
@@ -873,6 +869,25 @@ function isDefined(obj) {
 	}
 
 	return obj != null;
+}
+
+// Blog Fetch Details
+
+function blogContent(){
+	let content = {}
+	fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
+	.then( r => r.json())
+	.then(data => {
+		// console.log(data[1]['title']['rendered']);
+		var i;
+		for (i = 0; i < data.length; i++) { 
+			content += data[i]['title']['rendered'];
+			content += data[i]['link'];
+		}
+		// console.log(data.length);
+	});
+
+	return content;
 }
 
 // Spin up the server
