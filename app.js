@@ -204,7 +204,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						let element = [
 							{
 							 "title":data[randOne]['title']['rendered'],
-							 "image_url":result['media_details']['sizes']['thumbnail']['source_url'],
+							//  "image_url":"result['media_details']['sizes']['thumbnail']['source_url']",
 							 "subtitle":data[randOne]['excerpt']['rendered'],
 							 "default_action": {
 							   "type": "web_url",
@@ -221,7 +221,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						   },
 						   {
 							"title":data[randTwo]['title']['rendered'],
-							"image_url":result['media_details']['sizes']['thumbnail']['source_url'],
+							// "image_url":result['media_details']['sizes']['thumbnail']['source_url'],
 							"subtitle":data[randTwo]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
@@ -238,7 +238,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						  },
 						  {
 							"title":data[randThree]['title']['rendered'],
-							"image_url": result['media_details']['sizes']['thumbnail']['source_url'],
+							// "image_url": result['media_details']['sizes']['thumbnail']['source_url'],
 							"subtitle":data[randThree]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
@@ -255,7 +255,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						  },
 						  {
 							"title":data[randFour]['title']['rendered'],
-							"image_url":result['media_details']['sizes']['thumbnail']['source_url'],
+							// "image_url":result['media_details']['sizes']['thumbnail']['source_url'],
 							"subtitle":data[randFour]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
@@ -272,7 +272,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						  },
 						  {
 							"title":data[randFive]['title']['rendered'],
-							"image_url":result['media_details']['sizes']['thumbnail']['source_url'],
+							// "image_url":result['media_details']['sizes']['thumbnail']['source_url'],
 							"subtitle":data[randFive]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
