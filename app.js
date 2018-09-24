@@ -288,6 +288,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						  }
 						 ]
 						sendGenericMessage(sender, element);	 
+					})
+					.catch((err)=>{
+						console.log('Error in Blog Action', err);
 					});
 			// 		// content.push({'title': data[i]['title']['rendered'],
 			// 		// 			'link': data[i]['link']});
