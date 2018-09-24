@@ -189,92 +189,98 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 				.then( r => r.json())
 				.then(data => {
-					let randNo = Math.floor((Math.random() * data.length) + 1);;
+					let randOne = Math.floor((Math.random() * data.length) + 1);
+					let randTwo = Math.floor((Math.random() * data.length) + 1);
+					let randThree = Math.floor((Math.random() * data.length) + 1);
+					let randFour = Math.floor((Math.random() * data.length) + 1);
+					let randFive = Math.floor((Math.random() * data.length) + 1);
+
+
 					console.log('Random',randNo);
-					fetch(String(data[randNo]['_links']['wp:featuredmedia'][0]['href']))
+					fetch(String(data[randOne]['_links']['wp:featuredmedia'][0]['href']))
 					.then((result)=>{
 						let element = [
 							{
-							 "title":data[randNo]['title']['rendered'],
-							 "image_url":result['source_url'],
-							 "subtitle":data[randNo]['excerpt']['rendered'],
+							 "title":data[randOne]['title']['rendered'],
+							 "image_url":String(result['source_url']),
+							 "subtitle":data[randOne]['excerpt']['rendered'],
 							 "default_action": {
 							   "type": "web_url",
-							   "url": data[randNo]['link'],
+							   "url": data[randOne]['link'],
 							   "webview_height_ratio": "tall",
 							 },
 							 "buttons":[
 							   {
 								 "type":"web_url",
-								 "url":data[randNo]['link'],
+								 "url":data[randOne]['link'],
 								 "title":"View Website"
 							   }             
 							 ]      
 						   },
 						   {
-							"title":data[randNo]['title']['rendered'],
-							"image_url":result['source_url'],
-							"subtitle":data[randNo]['excerpt']['rendered'],
+							"title":data[randTwo]['title']['rendered'],
+							"image_url":String(result['source_url']),
+							"subtitle":data[randTwo]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
-							  "url": data[randNo]['link'],
+							  "url": data[randTwo]['link'],
 							  "webview_height_ratio": "tall",
 							},
 							"buttons":[
 							  {
 								"type":"web_url",
-								"url":data[randNo]['link'],
+								"url":data[randTwo]['link'],
 								"title":"View Website"
 							  }             
 							]      
 						  },
 						  {
-							"title":data[randNo]['title']['rendered'],
-							"image_url":result['source_url'],
-							"subtitle":data[randNo]['excerpt']['rendered'],
+							"title":data[randThree]['title']['rendered'],
+							"image_url": String(result['source_url']),
+							"subtitle":data[randThree]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
-							  "url": data[randNo]['link'],
+							  "url": data[randThree]['link'],
 							  "webview_height_ratio": "tall",
 							},
 							"buttons":[
 							  {
 								"type":"web_url",
-								"url":data[randNo]['link'],
+								"url":data[randThree]['link'],
 								"title":"View Website"
 							  }             
 							]      
 						  },
 						  {
-							"title":data[randNo]['title']['rendered'],
-							"image_url":result['source_url'],
-							"subtitle":data[randNo]['excerpt']['rendered'],
+							"title":data[randFour]['title']['rendered'],
+							"image_url":String(result['source_url']),
+							"subtitle":data[randFour]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
-							  "url": data[randNo]['link'],
+							  "url": data[randFour]['link'],
 							  "webview_height_ratio": "tall",
 							},
 							"buttons":[
 							  {
 								"type":"web_url",
-								"url":data[randNo]['link'],
+								"url":data[randFour]['link'],
 								"title":"View Website"
 							  }             
 							]      
 						  },
 						  {
-							"title":data[randNo]['title']['rendered'],
-							"image_url":result['source_url'],
-							"subtitle":data[randNo]['excerpt']['rendered'],
+							"title":data[randFive]['title']['rendered'],
+							"image_url":String(result['source_url']),
+							"subtitle":data[randFive]['excerpt']['rendered'],
 							"default_action": {
 							  "type": "web_url",
-							  "url": data[randNo]['link'],
+							  "url": data[randFive]['link'],
 							  "webview_height_ratio": "tall",
 							},
 							"buttons":[
 							  {
 								"type":"web_url",
-								"url":data[randNo]['link'],
+								"url":data[randFive]['link'],
 								"title":"View Website"
 							  }             
 							]      
