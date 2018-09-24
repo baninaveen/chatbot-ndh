@@ -187,7 +187,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "BlogActivity":
 			axios.get('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 				.then((res) => {
-					console.log('res', res.title.text());
+					console.log('res', res.title);
 				})
 				.catch((err)=>{
 					console.log('Error in BlogActivity', err);
