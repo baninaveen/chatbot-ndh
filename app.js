@@ -760,10 +760,11 @@ function sendAccountLinking(recipientId) {
 }
 
 function getUserProfile(userID){
-	axios.get(`https://graph.facebook.com/v2.7/${userID}?${config.FB_PAGE_TOKEN}`)
+	return axios.get(`https://graph.facebook.com/v2.7/${userID}?${config.FB_PAGE_TOKEN}`)
 	.then((res)=>{
 		var user = JSON.parse(res);
 		console.log(user);
+		return user;
 	})
 	.catch((err)=>{
 		console.log('Error UserGet ', err);
