@@ -299,7 +299,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		
 		case "MainmenuActivity":
 
-			let userData = getUserProfile(sender)
+			let userData = greetUserText(sender)
 			console.log('UserData', userData);
 
 			break;
@@ -759,17 +759,17 @@ function sendAccountLinking(recipientId) {
 	callSendAPI(messageData);
 }
 
-function getUserProfile(userID){
-	return axios.get(`https://graph.facebook.com/v2.7/${userID}?${config.FB_PAGE_TOKEN}`)
-	.then((res)=>{
-		var user = JSON.parse(res);
-		console.log(user);
-		return user;
-	})
-	.catch((err)=>{
-		console.log('Error UserGet ', err);
-	});
-}
+// function getUserProfile(userID){
+// 	return axios.get(`https://graph.facebook.com/v2.7/${userID}?${config.FB_PAGE_TOKEN}`)
+// 	.then((res)=>{
+// 		var user = JSON.parse(res);
+// 		console.log(user);
+// 		return user;
+// 	})
+// 	.catch((err)=>{
+// 		console.log('Error UserGet ', err);
+// 	});
+// }
 
 function greetUserText(userId) {
 	//first read user firstname
@@ -787,8 +787,9 @@ function greetUserText(userId) {
 			if (user.first_name) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
+				return user;		
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				// sendTextMessage(userId, "Welcome " + user.first_name + '!');
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
