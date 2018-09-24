@@ -298,10 +298,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		
 		
 		case "MainmenuActivity":
-
-			let userData = greetUserText(sender)
-			console.log('UserData', userData);
-
+			greetUserText(sender)
 			break;
 		default:
 			//unhandled action, just send back the text
@@ -787,9 +784,18 @@ function greetUserText(userId) {
 			if (user.first_name) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
-				return user;		
-
-				// sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				let reply = [
+					{
+					  "content_type":"text",
+					  "title":"Shopping"
+					},
+					{
+						"content_type":"text",
+						"title":"Content"
+					  }
+				  ]
+				
+				sendQuickReply(userId, `Welcome " ${user.first_name} !`, reply);
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
