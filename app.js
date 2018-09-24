@@ -300,6 +300,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "MainmenuActivity":
 
 			let userData = getUserProfile(sender)
+			console.log('UserData', userData);
 
 			break;
 		default:
