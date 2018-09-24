@@ -194,7 +194,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						let element = [
 							{
 							 "title":data[0]['title']['rendered'],
-							 "image_url":result['media_details']['sizes']['thumbnail']['source_url'],
+							 "image_url":result['source_url'],
 							 "subtitle":data[0]['excerpt']['rendered'],
 							 "default_action": {
 							   "type": "web_url",
