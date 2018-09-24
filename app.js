@@ -787,11 +787,14 @@ function greetUserText(userId) {
 				let reply = [
 					{
 					  "content_type":"text",
-					  "title":"Shopping"
+					  "title":"Shopping",
+					  "payload": "shopping"
 					},
 					{
 						"content_type":"text",
-						"title":"Content"
+						"title":"Content",
+						"payload": "blog"
+
 					  }
 				  ]
 				
