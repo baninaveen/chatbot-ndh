@@ -874,15 +874,15 @@ function isDefined(obj) {
 // Blog Fetch Details
 
 function blogContent(){
-	let content = {}
+	let content = []
 	fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 	.then( r => r.json())
 	.then(data => {
 		// console.log(data[1]['title']['rendered']);
 		var i;
 		for (i = 0; i < data.length; i++) { 
-			content += {'title': data[i]['title']['rendered'],
-						'link': data[i]['link']}
+			content.push({'title': data[i]['title']['rendered'],
+						'link': data[i]['link']});
 			// content += data[i]['link'];
 		}
 		// console.log(data.length);
