@@ -183,6 +183,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "input.welcome":
 			sendTextMessage(sender, "Hello this is Welcome Message from NDH");
 			break;
+		
+		case "BlogActivity":
+			axios.get('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
+				.then((res) => {
+					console.log('res', res);
+				})
+			break;	
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
