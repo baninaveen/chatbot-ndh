@@ -200,7 +200,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					// fetch(data[randOne]['_links']['wp:featuredmedia'][0]['href'])
 					// .then( rr => rr.json())
 					// .then((result)=>{
-						console.log('Result', result);
+						console.log('Result', data);
 						let element = [
 							{
 							 "title":data[randOne]['title']['rendered'],
@@ -300,7 +300,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "MainmenuActivity":
 
 			let userData = getUserProfile(sender)
-			
+
 			break;
 		default:
 			//unhandled action, just send back the text
