@@ -874,21 +874,23 @@ function isDefined(obj) {
 // Blog Fetch Details
 
 function blogContent(){
-	let content = []
-	fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
+	// let content = []
+	return fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 	.then( r => r.json())
 	.then(data => {
 		// console.log(data[1]['title']['rendered']);
+		var content = {}
 		var i;
 		for (i = 0; i < data.length; i++) { 
 			content.push({'title': data[i]['title']['rendered'],
 						'link': data[i]['link']});
 			// content += data[i]['link'];
 		}
+		return content;
 		// console.log(data.length);
 	});
 
-	return content;
+	// return content;
 }
 
 // Spin up the server
