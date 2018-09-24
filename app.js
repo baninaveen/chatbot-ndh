@@ -48,8 +48,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 
-
-
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	language: "en",
 	requestSource: "fb"
@@ -118,9 +116,6 @@ app.post('/webhook/', function (req, res) {
 		res.sendStatus(200);
 	}
 });
-
-
-
 
 
 function receivedMessage(event) {
