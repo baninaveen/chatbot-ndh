@@ -798,7 +798,7 @@ function greetUserText(userId) {
 					  }
 				  ]
 				
-				sendQuickReply(userId, `Welcome " ${user.first_name} !`, reply);
+				sendQuickReply(userId, `Welcome  ${user.first_name} ${user.last_name} !`, reply);
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
