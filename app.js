@@ -189,7 +189,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 				.then( r => r.json())
 				.then(data => {
-					let randNo = random_item(data);
+					let randNo = Math.floor((Math.random() * data.length) + 1);;
 					console.log('Random',randNo);
 					fetch(data[randNo]['_links']['wp:featuredmedia'][0]['href'])
 					.then((result)=>{
