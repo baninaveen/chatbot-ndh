@@ -210,7 +210,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							 ]      
 						   }
 						 ]
-						sendGenericMessage(sender, elements);	 
+						sendGenericMessage(sender, element);	 
 					})
 					// content.push({'title': data[i]['title']['rendered'],
 					// 			'link': data[i]['link']});
