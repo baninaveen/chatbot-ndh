@@ -881,8 +881,9 @@ function blogContent(){
 		// console.log(data[1]['title']['rendered']);
 		var i;
 		for (i = 0; i < data.length; i++) { 
-			content += data[i]['title']['rendered'];
-			content += data[i]['link'];
+			content += {'title': data[i]['title']['rendered'],
+						'link': data[i]['link']}
+			// content += data[i]['link'];
 		}
 		// console.log(data.length);
 	});
