@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const uuid = require('uuid');
+const axios = require('axios');
 
 
 // Messenger API parameters
@@ -179,6 +180,9 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
+		case "input.welcome":
+			sendTextMessage(sender, "Hello this is Welcome Message from NDH");
+			break;
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
