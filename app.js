@@ -186,8 +186,37 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			break;
 		
 		case "BlogActivity":
-			let content = blogContent();
-			console.log('Content', content);
+			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
+				.then( r => r.json())
+				.then(data => {
+					fetch(data[0]['wp:featuredmedia']['href'])
+					.then((result)=>{
+						let element = [
+							{
+							 "title":data[0]['title']['rendered'],
+							 "image_url":result['media_details']['sizes']['thumbnail']['source_url'],
+							 "subtitle":data[0]['excerpt']['rendered'],
+							 "default_action": {
+							   "type": "web_url",
+							   "url": data[0]['link'],
+							   "webview_height_ratio": "tall",
+							 },
+							 "buttons":[
+							   {
+								 "type":"web_url",
+								 "url":data[0]['link'],
+								 "title":"View Website"
+							   }             
+							 ]      
+						   }
+						 ]
+					})
+					
+					sendGenericMessage(sender, elements);
+					// content.push({'title': data[i]['title']['rendered'],
+					// 			'link': data[i]['link']});
+					// // content += data[i]['link'];
+				});
 			break;	
 		default:
 			//unhandled action, just send back the text
@@ -875,7 +904,7 @@ function isDefined(obj) {
 
 function blogContent(){
 	// let content = []
-	return fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
+	fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 	.then( r => r.json())
 	.then(data => {
 		// console.log(data[1]['title']['rendered']);
