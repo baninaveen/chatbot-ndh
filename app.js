@@ -191,7 +191,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				.then(data => {
 					let randNo = Math.floor((Math.random() * data.length) + 1);;
 					console.log('Random',randNo);
-					fetch(data[randNo]['_links']['wp:featuredmedia'][0]['href'])
+					fetch(String(data[randNo]['_links']['wp:featuredmedia'][0]['href']))
 					.then((result)=>{
 						let element = [
 							{
@@ -210,7 +210,75 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 								 "title":"View Website"
 							   }             
 							 ]      
-						   }
+						   },
+						   {
+							"title":data[randNo]['title']['rendered'],
+							"image_url":result['source_url'],
+							"subtitle":data[randNo]['excerpt']['rendered'],
+							"default_action": {
+							  "type": "web_url",
+							  "url": data[randNo]['link'],
+							  "webview_height_ratio": "tall",
+							},
+							"buttons":[
+							  {
+								"type":"web_url",
+								"url":data[randNo]['link'],
+								"title":"View Website"
+							  }             
+							]      
+						  },
+						  {
+							"title":data[randNo]['title']['rendered'],
+							"image_url":result['source_url'],
+							"subtitle":data[randNo]['excerpt']['rendered'],
+							"default_action": {
+							  "type": "web_url",
+							  "url": data[randNo]['link'],
+							  "webview_height_ratio": "tall",
+							},
+							"buttons":[
+							  {
+								"type":"web_url",
+								"url":data[randNo]['link'],
+								"title":"View Website"
+							  }             
+							]      
+						  },
+						  {
+							"title":data[randNo]['title']['rendered'],
+							"image_url":result['source_url'],
+							"subtitle":data[randNo]['excerpt']['rendered'],
+							"default_action": {
+							  "type": "web_url",
+							  "url": data[randNo]['link'],
+							  "webview_height_ratio": "tall",
+							},
+							"buttons":[
+							  {
+								"type":"web_url",
+								"url":data[randNo]['link'],
+								"title":"View Website"
+							  }             
+							]      
+						  },
+						  {
+							"title":data[randNo]['title']['rendered'],
+							"image_url":result['source_url'],
+							"subtitle":data[randNo]['excerpt']['rendered'],
+							"default_action": {
+							  "type": "web_url",
+							  "url": data[randNo]['link'],
+							  "webview_height_ratio": "tall",
+							},
+							"buttons":[
+							  {
+								"type":"web_url",
+								"url":data[randNo]['link'],
+								"title":"View Website"
+							  }             
+							]      
+						  }
 						 ]
 						sendGenericMessage(sender, element);	 
 					});
