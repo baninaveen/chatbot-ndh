@@ -294,7 +294,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.log('Error in Blog Action', err);
 					});
 				// });
-			break;	
+			break;
+		
+		
+		case "MainmenuActivity":
+
+			let userData = getUserProfile(sender)
+			
+			break;
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
@@ -751,6 +758,16 @@ function sendAccountLinking(recipientId) {
 	callSendAPI(messageData);
 }
 
+function getUserProfile(userID){
+	axios.get(`https://graph.facebook.com/v2.7/${userID}?${config.FB_PAGE_TOKEN}`)
+	.then((res)=>{
+		var user = JSON.parse(res);
+		console.log(user);
+	})
+	.catch((err)=>{
+		console.log('Error UserGet ', err);
+	});
+}
 
 function greetUserText(userId) {
 	//first read user firstname
