@@ -189,7 +189,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 				.then( r => r.json())
 				.then(data => {
-					console.log(data[1]['title']);
+					console.log(data[1]['title']['rendered']);
 				});
 			break;	
 		default:
