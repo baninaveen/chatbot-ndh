@@ -190,7 +190,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				.then( r => r.json())
 				.then(data => {
 					// console.log(data[1]['title']['rendered']);
-					console.log(data.length());
+					console.log(data.length);
 				});
 			break;	
 		default:
