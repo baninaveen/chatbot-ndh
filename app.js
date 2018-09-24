@@ -197,9 +197,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 
 					console.log('Random',randOne);
-					fetch(data[randOne]['_links']['wp:featuredmedia'][0]['href'])
-					.then( rr => rr.json())
-					.then((result)=>{
+					// fetch(data[randOne]['_links']['wp:featuredmedia'][0]['href'])
+					// .then( rr => rr.json())
+					// .then((result)=>{
 						console.log('Result', result);
 						let element = [
 							{
@@ -293,10 +293,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					.catch((err)=>{
 						console.log('Error in Blog Action', err);
 					});
-			// 		// content.push({'title': data[i]['title']['rendered'],
-			// 		// 			'link': data[i]['link']});
-			// 		// // content += data[i]['link'];
-				});
+				// });
 			break;	
 		default:
 			//unhandled action, just send back the text
