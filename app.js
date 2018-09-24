@@ -9,6 +9,7 @@ const request = require('request');
 const app = express();
 const uuid = require('uuid');
 const axios = require('axios');
+const isomorphicUnfetch = require("isomorphic-unfetch");
 
 
 // Messenger API parameters
@@ -185,13 +186,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			break;
 		
 		case "BlogActivity":
-			axios.get('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
-				.then(res => res.json())
+			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
+				.then( r => r.json())
 				.then(data => {
-					console.log('Data:', data);
-				})
-				.catch((err)=>{
-					console.log('Error in BlogActivity', err);
+					console.log(data);
 				});
 			break;	
 		default:
