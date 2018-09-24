@@ -189,34 +189,34 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
 				.then( r => r.json())
 				.then(data => {
-					// fetch(data[0]['_links']['wp:featuredmedia'][0]['href'])
-					fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/media/129')
+					let randNo = random.choice(data);
+					fetch(data[randNo]['_links']['wp:featuredmedia'][0]['href'])
 					.then((result)=>{
 						let element = [
 							{
-							 "title":data[0]['title']['rendered'],
+							 "title":data[randNo]['title']['rendered'],
 							 "image_url":result['source_url'],
-							 "subtitle":data[0]['excerpt']['rendered'],
+							 "subtitle":data[randNo]['excerpt']['rendered'],
 							 "default_action": {
 							   "type": "web_url",
-							   "url": data[0]['link'],
+							   "url": data[randNo]['link'],
 							   "webview_height_ratio": "tall",
 							 },
 							 "buttons":[
 							   {
 								 "type":"web_url",
-								 "url":data[0]['link'],
+								 "url":data[randNo]['link'],
 								 "title":"View Website"
 							   }             
 							 ]      
 						   }
 						 ]
-					sendGenericMessage(sender, element);	 
+						sendGenericMessage(sender, element);	 
 					});
 			// 		// content.push({'title': data[i]['title']['rendered'],
 			// 		// 			'link': data[i]['link']});
 			// 		// // content += data[i]['link'];
-			// 	});
+				});
 			break;	
 		default:
 			//unhandled action, just send back the text
