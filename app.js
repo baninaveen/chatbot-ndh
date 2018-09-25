@@ -298,31 +298,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		
 		
 		case "MainmenuActivity":
-			greetUserText(sender)
-			let payload = {
-				"type":"payment",
-				"title":"Title of the product",
-				"payload":"buy",
-				"payment_summary":{
-				  "currency":"INR",
-				  "payment_type":"500", 
-				  "merchant_name":"NDH",
-				  "requested_user_info":[
-					"shipping_address",
-					"contact_name",
-					"contact_phone",
-					"contact_email"
-				  ],
-				  "price_list":[
-					{
-					  "label":"Jeans",
-					  "amount":"1000"
-					}
-				  ]
-				}
-			  }
-
-			  sendGenericMessage(sender, payload);
+			greetUserText(sender);
 			break;
 		default:
 			//unhandled action, just send back the text
