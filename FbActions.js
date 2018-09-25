@@ -14,7 +14,7 @@ module.exports = {
                 break;
             
             case "SubscriptionActivity":
-                let replies = [
+                let subscribe_replies = [
                     {
                         "content_type":"text",
                         "title":"Subscribe",
@@ -27,7 +27,7 @@ module.exports = {
     
                         }
                     ]
-                    FbResponse.sendQuickReply(sender, "Would you like to subscribe to our newletter and Best Deals and Offer?", replies)
+                    FbResponse.sendQuickReply(sender, "Would you like to subscribe to our newletter and Best Deals and Offer?", subscribe_replies);
                 break;
             
             case "SubscriptionActivitySubscribe":
@@ -35,14 +35,14 @@ module.exports = {
                 break;
     
             case "SubscriptionActivityUnsubscribe":
-                let replies = [
+                let unsub_replies = [
                     {
                     "content_type":"text",
                     "title":"Subscribe",
                     "payload": "SUBSCRIBE_BLOG"
                     }
                 ]
-                FbResponse.sendQuickReply(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'", replies)
+                FbResponse.sendQuickReply(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'", unsub_replies)
                 break;
             
     
