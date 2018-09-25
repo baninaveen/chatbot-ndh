@@ -112,6 +112,44 @@ app.post('/webhook/', function (req, res) {
 	}
 });
 
+function receivedMessage(event){
+	var senderID = event.sender.id;
+	var recipientID = event.recipient.id;
+	var timeOfMessage = event.timestamp;
+	var message = event.message;
+
+	if (!sessionIds.has(senderID)) {
+		sessionIds.set(senderID, uuid.v1());
+	}
+	//console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
+	//console.log(JSON.stringify(message));
+
+	var isEcho = message.is_echo;
+	var messageId = message.mid;
+	var appId = message.app_id;
+	var metadata = message.metadata;
+
+	// You may get a text or attachment but not both
+	var messageText = message.text;
+	var messageAttachments = message.attachments;
+	var quickReply = message.quick_reply;
+
+	if (isEcho) {
+		fbAction.handleEcho(messageId, appId, metadata);
+		return;
+	} else if (quickReply) {
+		fbQuickReply.facebookQuickReply(senderID, quickReply, messageId);
+		return;
+	}
+
+	if (messageText) {
+		//send message to api.ai
+		aiService.sendToApiAi(senderID, messageText);
+	} else if (messageAttachments) {
+		fbAction.handleMessageAttachments(messageAttachments, senderID);
+	}
+}
+
 // Spin up the server
 app.listen(app.get('port'), function () {
 	console.log('running on port', app.get('port'))
