@@ -57,7 +57,7 @@ module.exports = {
                   "image_url":"https://nextdoorhub.imgix.net/catalog/product/20180810/1ca9eadc111d19a8341ff80c085495d9.jpg?w=600&h=660"
                 }
               ]
-                sendReceiptMessage(sender, "Bani Naveen", "INR", "Online",
+                FbResponse.sendReceiptMessage(sender, "Bani Naveen", "INR", "Online",
                     "1537874582108", element, "Barrackpore", "One Tshirt", "Nothing")
                 break;
     
