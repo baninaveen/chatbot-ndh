@@ -305,8 +305,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				"payload":"buy",
 				"payment_summary":{
 				  "currency":"INR",
-				  "payment_type":"500",
-				  "is_test_payment" : TRUE, 
+				  "payment_type":"500", 
 				  "merchant_name":"NDH",
 				  "requested_user_info":[
 					"shipping_address",
