@@ -71,7 +71,6 @@ module.exports = {
     
         if (messageText) {
             //send message to api.ai
-            // aiService.sendToApiAi(senderID, messageText);
             aiService.sendToApiAi(senderID, messageText);
         } else if (messageAttachments) {
             fbAction.handleMessageAttachments(messageAttachments, senderID);
