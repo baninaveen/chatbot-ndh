@@ -50,12 +50,6 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
-const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
-	language: "en",
-	requestSource: "fb"
-});
-const sessionIds = new Map();
-
 // Index route
 app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')

@@ -7,6 +7,8 @@ const crypto = require('crypto');
 const config = require('./config');
 
 
+const sessionIds = new Map();
+
 // Internal Functions
 function callSendAPI(messageData) {
 	request({
