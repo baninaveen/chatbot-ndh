@@ -908,7 +908,7 @@ function receivedPostback(event) {
 			break;
 		
 		case "MANAGE_SUBSCRIPTION":
-			let replies = [
+			let manage_replies = [
 				{
 				"content_type":"text",
 				"title":"Subscribe",
@@ -921,7 +921,7 @@ function receivedPostback(event) {
 
 				}
 			]
-			sendQuickReply(senderID, "Would you like to subscribe to our newletter and Best Deals and Offer?", replies)
+			sendQuickReply(senderID, "Would you like to subscribe to our newletter and Best Deals and Offer?", manage_replies);
 			break;
 		
 		default:
