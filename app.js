@@ -11,6 +11,7 @@ const uuid = require('uuid');
 const axios = require('axios');
 const isomorphicUnfetch = require("isomorphic-unfetch");
 const FbAction = require('./FbActions');
+const FbPostbacks = require('./FbPostbacks');
 
 
 // Messenger API parameters
@@ -103,7 +104,8 @@ app.post('/webhook/', function (req, res) {
 				} else if (messagingEvent.delivery) {
 					receivedDeliveryConfirmation(messagingEvent);
 				} else if (messagingEvent.postback) {
-					receivedPostback(messagingEvent);
+					// receivedPostback(messagingEvent);
+					FbPostbacks.receivedPostback(messagingEvent);
 				} else if (messagingEvent.read) {
 					receivedMessageRead(messagingEvent);
 				} else if (messagingEvent.account_linking) {
@@ -887,56 +889,56 @@ function callSendAPI(messageData) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
  * 
  */
-function receivedPostback(event) {
-	var senderID = event.sender.id;
-	var recipientID = event.recipient.id;
-	var timeOfPostback = event.timestamp;
+// function receivedPostback(event) {
+// 	var senderID = event.sender.id;
+// 	var recipientID = event.recipient.id;
+// 	var timeOfPostback = event.timestamp;
 
-	// The 'payload' param is a developer-defined field which is set in a postback 
-	// button for Structured Messages. 
-	var payload = event.postback.payload;
+// 	// The 'payload' param is a developer-defined field which is set in a postback 
+// 	// button for Structured Messages. 
+// 	var payload = event.postback.payload;
 
-	switch (payload) {
-		case "GET_STARTED":
-			greetUserText(senderID);
-			break;
+// 	switch (payload) {
+// 		case "GET_STARTED":
+// 			greetUserText(senderID);
+// 			break;
 
-		case "SUBSCRIBE_BLOG":
-			sendTextMessage(senderID, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right here");
-			break;
+// 		case "SUBSCRIBE_BLOG":
+// 			sendTextMessage(senderID, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right here");
+// 			break;
 		
-		case "UNSUBSCRIBE_BLOG":
-			sendTextMessage(senderID, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
-			break;
+// 		case "UNSUBSCRIBE_BLOG":
+// 			sendTextMessage(senderID, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
+// 			break;
 		
-		case "MANAGE_SUBSCRIPTION":
-			let manage_replies = [
-				{
-				"content_type":"text",
-				"title":"Subscribe",
-				"payload": "SUBSCRIBE_BLOG"
-				},
-				{
-					"content_type":"text",
-					"title":"Unsubscribe",
-					"payload": "UNSUBSCRIBE_BLOG"
+// 		case "MANAGE_SUBSCRIPTION":
+// 			let manage_replies = [
+// 				{
+// 				"content_type":"text",
+// 				"title":"Subscribe",
+// 				"payload": "SUBSCRIBE_BLOG"
+// 				},
+// 				{
+// 					"content_type":"text",
+// 					"title":"Unsubscribe",
+// 					"payload": "UNSUBSCRIBE_BLOG"
 
-				}
-			]
-			sendQuickReply(senderID, "Would you like to subscribe to our newletter and Best Deals and Offer?", manage_replies);
-			break;
+// 				}
+// 			]
+// 			sendQuickReply(senderID, "Would you like to subscribe to our newletter and Best Deals and Offer?", manage_replies);
+// 			break;
 		
-		default:
-			//unindentified payload
-			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
-			break;
+// 		default:
+// 			//unindentified payload
+// 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
+// 			break;
 
-	}
+// 	}
 
-	console.log("Received postback for user %d and page %d with payload '%s' " +
-		"at %d", senderID, recipientID, payload, timeOfPostback);
+// 	console.log("Received postback for user %d and page %d with payload '%s' " +
+// 		"at %d", senderID, recipientID, payload, timeOfPostback);
 
-}
+// }
 
 
 /*
