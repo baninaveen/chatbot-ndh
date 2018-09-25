@@ -887,7 +887,7 @@ function receivedPostback(event) {
 			break;
 		
 		case "UNSUBSCRIBE":
-			sendTextMessage(senderID, "Sorry for inconvience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
+			sendTextMessage(senderID, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
 			break;
 
 		default:
