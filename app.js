@@ -300,6 +300,23 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "MainmenuActivity":
 			greetUserText(sender);
 			break;
+		
+		case "SubscriptionActivity":
+			let replies = [
+				{
+				  "content_type":"text",
+				  "title":"Subscribe",
+				  "payload": "SUBSCRIBE"
+				},
+				{
+					"content_type":"text",
+					"title":"Unsubscribe",
+					"payload": "UNSUBSCRIBE"
+
+				  }
+			  ]
+			  sendQuickReply(sender, "Would you like to subscribe to our newletter and Best Deals and Offer?")
+			break;
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
@@ -863,6 +880,14 @@ function receivedPostback(event) {
 	switch (payload) {
 		case "GET_STARTED":
 			greetUserText(senderID);
+			break;
+
+		case "SUBSCRIBE":
+			sendTextMessage(senderID, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right here");
+			break;
+		
+		case "UNSUBSCRIBE":
+			sendTextMessage(senderID, "Sorry for inconvience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
 			break;
 		default:
 			//unindentified payload
