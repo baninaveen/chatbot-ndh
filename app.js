@@ -60,7 +60,7 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 const sessionIds = new Map();
 
 
-var j = schedule.scheduleJob('/5 * * * * *', function(){
+var j = schedule.scheduleJob('* /5 * * * *', function(){
 	console.log('The answer to life, the universe, and everything!');
   });
 
