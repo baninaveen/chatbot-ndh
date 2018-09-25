@@ -5,4 +5,15 @@ module.exports = {
     FB_APP_SECRET: '56fd35311eceb90f1119b6944481822c',
     SERVER_URL: "https://ndh-chatbot-facebook.herokuapp.com/",
     BLOG_SUBSCRIPTION_ID: "1922289691160887",
+    isDefined : (obj) => {
+        if (typeof obj == 'undefined') {
+            return false;
+        }
+    
+        if (!obj) {
+            return false;
+        }
+    
+        return obj != null;
+    }
 };

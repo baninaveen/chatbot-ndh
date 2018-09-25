@@ -2,7 +2,13 @@ const FbResponse = require('./FbResponses');
 
 
 module.exports = {
-
+    /*
+    * Postback Event
+    *
+    * This event is called when a postback is tapped on a Structured Message. 
+    * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
+    * 
+    */
     receivedPostback : (event) => {
         var senderID = event.sender.id;
         var recipientID = event.recipient.id;

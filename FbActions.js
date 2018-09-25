@@ -1,6 +1,7 @@
 const config = require('./config');
 const FbResponse = require('./FbResponses');
 const express = require('express');
+const apiAiService = require('./apiAiService');
 
 module.exports = {
     FacebookAction : (sender, action, responseText, contexts, parameters)=>{
@@ -50,5 +51,16 @@ module.exports = {
                 //unhandled action, just send back the text
                 FbResponse.sendTextMessage(sender, responseText);
         }
-    }
+    },
+
+    //https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-echo
+    handleEcho : (messageId, appId, metadata) => {
+        // Just logging message echoes to console
+        console.log("Received echo for message %s and app %d with metadata %s", messageId, appId, metadata);
+    },
+
+    handleMessageAttachments : (messageAttachments, senderID) => {
+        //for now just reply
+        fbResponse.sendTextMessage(senderID, "Attachment received. Thank you.");	
+    },    
 }

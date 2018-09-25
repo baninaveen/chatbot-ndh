@@ -29,17 +29,6 @@ function callSendAPI(messageData) {
 	});
 }
 
-function isDefined(obj) {
-	if (typeof obj == 'undefined') {
-		return false;
-	}
-	if (!obj) {
-		return false;
-	}
-	return obj != null;
-}
-
-
 module.exports = {
     
     sendTextMessage: (recipientId, text) => {
@@ -250,7 +239,7 @@ module.exports = {
             },
             message: {
                 text: text,
-                metadata: isDefined(metadata)?metadata:'',
+                metadata: config.isDefined(metadata)?metadata:'',
                 quick_replies: replies
             }
         };
