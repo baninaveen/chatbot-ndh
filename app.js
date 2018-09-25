@@ -98,7 +98,7 @@ app.post('/webhook/', function (req, res) {
 				if (messagingEvent.optin) {
 					FacebookServices.receivedAuthentication(messagingEvent);
 				} else if (messagingEvent.message) {
-					FacebookServices.receivedMessage(messagingEvent);
+					receivedMessage(messagingEvent);
 				} else if (messagingEvent.delivery) {
 					FacebookServices.receivedDeliveryConfirmation(messagingEvent);
 				} else if (messagingEvent.postback) {
