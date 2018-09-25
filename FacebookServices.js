@@ -4,6 +4,7 @@ const fbAction = require('./FbActions');
 const aiService = require('./apiAiService');
 const fbQuickReply = require('./fbQuickReplyAction');
 const crypto = require('crypto');
+const config = require('./config');
 
 
 // Internal Functions
