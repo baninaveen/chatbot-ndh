@@ -319,7 +319,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			break;
 		
 		case "SubscriptionActivitySubscribe":
-			sendTextMessage(sender, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right here");
+			sendTextMessage(sender, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right into your inbox");
 			break;
 		default:
 			//unhandled action, just send back the text
