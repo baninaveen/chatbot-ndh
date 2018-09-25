@@ -40,7 +40,6 @@ function callSendAPI(messageData) {
 module.exports = {
 
     receivedMessage : (event) => {
-
         var senderID = event.sender.id;
         var recipientID = event.recipient.id;
         var timeOfMessage = event.timestamp;
@@ -70,9 +69,9 @@ module.exports = {
             return;
         }
     
-    
         if (messageText) {
             //send message to api.ai
+            // aiService.sendToApiAi(senderID, messageText);
             aiService.sendToApiAi(senderID, messageText);
         } else if (messageAttachments) {
             fbAction.handleMessageAttachments(messageAttachments, senderID);
