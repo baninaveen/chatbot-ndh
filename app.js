@@ -323,8 +323,16 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			break;
 
 		case "SubscriptionActivityUnsubscribe":
-		sendTextMessage(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
+			let replies = [
+				{
+				"content_type":"text",
+				"title":"Subscribe",
+				"payload": "SUBSCRIBE_BLOG"
+				}
+			]
+			sendQuickReply(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'", replies)
 			break;
+		
 
 		default:
 			//unhandled action, just send back the text
