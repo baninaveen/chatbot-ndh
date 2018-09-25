@@ -315,7 +315,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 				  }
 			  ]
-			  sendQuickReply(sender, "Would you like to subscribe to our newletter and Best Deals and Offer?")
+			  sendQuickReply(sender, "Would you like to subscribe to our newletter and Best Deals and Offer?", replies)
 			break;
 		default:
 			//unhandled action, just send back the text
@@ -889,6 +889,7 @@ function receivedPostback(event) {
 		case "UNSUBSCRIBE":
 			sendTextMessage(senderID, "Sorry for inconvience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
 			break;
+
 		default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
