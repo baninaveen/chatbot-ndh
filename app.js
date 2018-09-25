@@ -906,7 +906,24 @@ function receivedPostback(event) {
 		case "UNSUBSCRIBE_BLOG":
 			sendTextMessage(senderID, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
 			break;
+		
+		case "MANAGE_SUBSCRIPTION":
+			let replies = [
+				{
+				"content_type":"text",
+				"title":"Subscribe",
+				"payload": "SUBSCRIBE_BLOG"
+				},
+				{
+					"content_type":"text",
+					"title":"Unsubscribe",
+					"payload": "UNSUBSCRIBE_BLOG"
 
+				}
+			]
+			sendQuickReply(senderID, "Would you like to subscribe to our newletter and Best Deals and Offer?", replies)
+			break;
+		
 		default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
