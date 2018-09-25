@@ -15,6 +15,7 @@ const FbPostbacks = require('./FbPostbacks');
 const FacebookServices = require('./FacebookServices');
 const aiService = require('./apiAiService');
 const fbResponse = require('./FbResponses');
+const schedule = require('node-schedule');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -57,6 +58,11 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 });
 
 const sessionIds = new Map();
+
+
+var j = schedule.scheduleJob('3 * * * * *', function(){
+	console.log('The answer to life, the universe, and everything!');
+  });
 
 // Index route
 app.get('/', function (req, res) {
