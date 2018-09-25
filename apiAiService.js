@@ -29,14 +29,14 @@ function handleApiAiResponse (sender, response) {
             if ( previousType == 1 && (messages[i].type != 1 || i == messages.length - 1)) {
 
                 timeout = (i - 1) * timeoutInterval;
-                setTimeout(handleCardMessages.bind(null, cardTypes, sender), timeout);
+                setTimeout(facebookServices.handleCardMessages.bind(null, cardTypes, sender), timeout);
                 cardTypes = [];
                 timeout = i * timeoutInterval;
                 setTimeout(facebookServices.handleMessage.bind(null, messages[i], sender), timeout);
             } else if ( messages[i].type == 1 && i == messages.length - 1) {
                 cardTypes.push(messages[i]);
                         timeout = (i - 1) * timeoutInterval;
-                        setTimeout(handleCardMessages.bind(null, cardTypes, sender), timeout);
+                        setTimeout(facebookServices.handleCardMessages.bind(null, cardTypes, sender), timeout);
                         cardTypes = [];
             } else if ( messages[i].type == 1 ) {
                 cardTypes.push(messages[i]);
@@ -72,7 +72,6 @@ function handleApiAiResponse (sender, response) {
 module.exports = {
 
     sendToApiAi : (sender, text) => {
-
         fbResponse.sendTypingOn(sender);
         let apiaiRequest = apiAiService.textRequest(text, {
             sessionId: sessionIds.get(sender)
