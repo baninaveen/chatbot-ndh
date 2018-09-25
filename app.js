@@ -306,12 +306,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				{
 				  "content_type":"text",
 				  "title":"Subscribe",
-				  "payload": "SUBSCRIBE"
+				  "payload": "SUBSCRIBE_BLOG"
 				},
 				{
 					"content_type":"text",
 					"title":"Unsubscribe",
-					"payload": "UNSUBSCRIBE"
+					"payload": "UNSUBSCRIBE_BLOG"
 
 				  }
 			  ]
@@ -882,11 +882,11 @@ function receivedPostback(event) {
 			greetUserText(senderID);
 			break;
 
-		case "SUBSCRIBE":
+		case "SUBSCRIBE_BLOG":
 			sendTextMessage(senderID, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right here");
 			break;
 		
-		case "UNSUBSCRIBE":
+		case "UNSUBSCRIBE_BLOG":
 			sendTextMessage(senderID, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'");
 			break;
 
