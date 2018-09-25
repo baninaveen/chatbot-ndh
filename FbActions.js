@@ -10,7 +10,7 @@ module.exports = {
                 break;
             
             case "MainmenuActivity":
-                greetUserText(sender);
+                // greetUserText(sender);
                 break;
             
             case "SubscriptionActivity":
