@@ -45,7 +45,21 @@ module.exports = {
                 ]
                 FbResponse.sendQuickReply(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'", unsub_replies)
                 break;
-            
+
+            case "TestActivity":
+            let element = [
+                {
+                  "title": "Google PIxel",
+                  "subtitle":"ITEM_DESCRIPTION_OR_DETAILS",
+                  "quantity": 2,
+                  "price": 200,
+                  "currency": "INR",
+                  "image_url":"https://nextdoorhub.imgix.net/catalog/product/20180810/1ca9eadc111d19a8341ff80c085495d9.jpg?w=600&h=660"
+                }
+              ]
+                sendReceiptMessage(sender, "Bani Naveen", "INR", "Online",
+                    "1537874582108", element, "Barrackpore", "One Tshirt", "Nothing")
+                break;
     
             default:
                 //unhandled action, just send back the text
