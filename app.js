@@ -317,6 +317,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  ]
 			  sendQuickReply(sender, "Would you like to subscribe to our newletter and Best Deals and Offer?", replies)
 			break;
+		
+		case "SubscriptionActivitySubscribe":
+			sendTextMessage(senderID, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right here");
+			break;
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
