@@ -202,7 +202,7 @@ function handleApiAiResponse (sender, response) {
         //api ai could not evaluate input.
         console.log('Unknown query' + response.result.resolvedQuery);
         fbResponse.sendTextMessage(sender, "I'm not sure what you want. Can you be more specific?");
-    } else if (isDefined(action)) {
+    } else if (config.isDefined(action)) {
         // handleApiAiAction(sender, action, responseText, contexts, parameters);
         fbAction.FacebookAction(sender, action, responseText, contexts, parameters);
     } else if (config.isDefined(responseData) && config.isDefined(responseData.facebook)) {
