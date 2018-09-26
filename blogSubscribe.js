@@ -125,10 +125,10 @@ module.exports = {
     
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                var title = body[0]['title']['rendered'];
+                // let title = body[0]['title']['rendered'];
                 let link = body[0]['link']
-                let description = body[0]['excerpt']['rendered']
-                console.log("Title Link Description ", title, link, description);
+                // let description = body[0]['excerpt']['rendered']
+                console.log("Title Link Description ", link);
                 var messageData = {
                     messages:[
                     {
