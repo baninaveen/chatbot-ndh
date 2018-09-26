@@ -57,7 +57,7 @@ module.exports = {
         fbResponse.sendTextMessage(senderID, "Hello this is Broadcast Message");
     },
     sendBroadcastTextMessage : (text, customlabelId) => {
-        var messageData = { 
+        var messageData = {
               messages:[
               {
                 text: text,//"This is Daily notifications Broadcast Message",
@@ -91,5 +91,62 @@ module.exports = {
                 console.error("Failed calling subscribe articles API", response.statusCode, response.statusMessage, body.error);
             }
         });
+    },
+
+    blogContent : (customlabelId) => {
+        request({
+            uri: 'http://blog.nextdoorhub.com/index.php/wp-json/wp/v2/posts',
+            headers:{'content-type': 'application/json'},
+            method: 'GET'
+    
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var title = body[0]['title']['rendered'];
+                let link = body[0]['link']
+                let description = body[0]['excerpt']['rendered']
+                console.log("Title Link Description ", title, link, description);
+                var messageData = {
+                    messages:[
+                    {
+                      text: title,//"This is Daily notifications Broadcast Message",
+                    }
+                   ]
+                }
+                //callSendAPI(messageData);
+                broadcastSystemAPI(messageData, customlabelId);
+
+                // request({
+                //     uri: 'https://graph.facebook.com/v2.11/me/broadcast_messages',
+                //     qs: {
+                //         access_token: config.FB_PAGE_TOKEN
+                //     },
+                //     method: 'POST',
+                //     body: {
+                //      message_creative_id: messageCreativeId,
+                //      custom_label_id: customlabelId
+                //     },
+                //     json: true
+    
+                // }, function (error, response, body) {
+                //     if (!error && response.statusCode == 200) {
+                //         var broadcastId = body.broadcast_id;
+                //         //var messageId = body.message_id;
+    
+                //         if (broadcastId) {
+                //             console.log("Successfully send broadcast message with success id %s",
+                //                 broadcastId);
+                //         } else {
+                //             console.log("Successfully called Broadcast Message API with success id %s",
+                //                 broadcastId);
+                //         }
+                //     } else {
+                //         console.error("Failed calling broadcast API", response.statusCode, response.statusMessage, body.error);
+                //     }
+                // });
+            } else {
+                console.error("Failed calling blog content error API", response.statusCode, response.statusMessage, body.error);
+            }
+        });
     }
+    
 }

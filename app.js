@@ -20,7 +20,6 @@ const broadCast = require('./blogSubscribe');
 const fbQuickReply = require('./fbQuickReplyAction');
 
 
-
 // Send Broadcast Message from CronJob
 broadCastJob();
 
@@ -76,8 +75,8 @@ function broadCastJob(){
 	console.log('Broadcast Block');
 	var j = schedule.scheduleJob('*/2 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
-		
-		broadCast.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
+		broadCast.blogContent(config.BLOG_SUBSCRIPTION_ID);
+		// broadCast.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
 	});
 }
 
