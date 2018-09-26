@@ -132,7 +132,7 @@ module.exports = {
                 var messageData = {
                     messages:[
                     {
-                      text: title,//"This is Daily notifications Broadcast Message",
+                      text: link,//"This is Daily notifications Broadcast Message",
                     }
                    ]
                 }
