@@ -5,7 +5,7 @@ module.exports = {
     FB_APP_SECRET: '56fd35311eceb90f1119b6944481822c',
     FB_APP_ID: "251097972275735",
     SERVER_URL: "https://ndh-chatbot-facebook.herokuapp.com/",
-    BLOG_SUBSCRIPTION_ID: "1922289691160887",
+    BLOG_SUBSCRIPTION_ID: "1770141073054491",
     ADMIN_ID: "2021700781228161",
     isDefined : (obj) => {
         if (typeof obj == 'undefined') {
