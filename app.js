@@ -25,7 +25,7 @@ const broadcast = require('./routes/broadcast');
 
 
 // Send Broadcast Message from CronJob
-broadCastJob();
+// broadCastJob();
 
 
 // Messenger API parameters
