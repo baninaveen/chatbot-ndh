@@ -70,29 +70,8 @@ const sessionIds = new Map();
 function broadCastJob(){
 	var j = schedule.scheduleJob('* /1 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
-		let payload_broadcast = [{
-			"attachment":{
-			  "type":"template",
-			  "payload":{
-				"template_type":"generic",
-				"elements":[
-				   {
-					"title":"Welcome to Our Marketplace!",
-					"image_url":"https://www.facebook.com/jaspers.png",
-					"subtitle":"Fresh fruits and vegetables. Yum.",
-					"buttons":[
-					  {
-						"type":"web_url",
-						"url":"https://www.jaspersmarket.com",
-						"title":"View Website"
-					  }              
-					]      
-				  }
-				]
-			  }       
-			}
-		  }]
-		broadCast.broadcastSystemAPI(payload_broadcast, config.BLOG_SUBSCRIPTION_ID);
+		
+		broadCast.sendBroadcastTextMessage("Hello this is Braodcast Messages", config.BLOG_SUBSCRIPTION_ID);
 	});
 }
 
