@@ -110,8 +110,8 @@ function broadCastJob(){
 	console.log('Broadcast Block');
 	var j = schedule.scheduleJob('*/2 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
-		blogSubscribe.blogContent(config.BLOG_SUBSCRIPTION_ID);
-		// blogSubscribe.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
+		// blogSubscribe.blogContent(config.BLOG_SUBSCRIPTION_ID);
+		blogSubscribe.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
 	});
 }
 
