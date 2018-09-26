@@ -101,9 +101,9 @@ module.exports = {
     
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                var title = body[0]['title']['rendered'];
-                let link = body[0]['link']
-                let description = body[0]['excerpt']['rendered']
+                var title = body[0][0]['title']['rendered'];
+                let link = body[0][0]['link']
+                let description = body[0][0]['excerpt']['rendered']
                 console.log("Title Link Description ", title, link, description);
                 var messageData = {
                     messages:[
