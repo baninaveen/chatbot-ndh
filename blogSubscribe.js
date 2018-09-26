@@ -70,7 +70,7 @@ module.exports = {
 
     subscribeArticles : (recipientId) => {
         request({
-            uri: 'https://graph.facebook.com/v2.11/1940719912624635/label',
+            uri: 'https://graph.facebook.com/v2.11/1922289691160887/label',
             qs: {
                 access_token: config.FB_PAGE_TOKEN
             },
