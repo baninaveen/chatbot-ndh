@@ -1,4 +1,5 @@
 const FbResponse = require('./FbResponses');
+const fbCustom = require('./fbCustomFunction');
 
 
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
     
         switch (payload) {
             case "GET_STARTED":
-                greetUserText(senderID);
+                fbCustom.greetUserText(senderID);
                 break;
     
             case "SUBSCRIBE_BLOG":

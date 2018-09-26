@@ -49,6 +49,11 @@ app.use(bodyParser.json({
 	verify: FacebookServices.verifyRequestSignature
 }));
 
+// Set EJS Engine
+app.set('view engine', 'ejs');
+
+
+
 //serve static files in the public directory
 app.use(express.static('public'));
 
@@ -79,7 +84,8 @@ function broadCastJob(){
 
 // Index route
 app.get('/', function (req, res) {
-	res.send('Hello world, I am a chat bot')
+	// res.send('Hello world, I am a chat bot');
+	res.render('pages/index');
 })
 
 // for Facebook verification

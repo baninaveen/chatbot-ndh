@@ -3,6 +3,7 @@ const FbResponse = require('./FbResponses');
 const express = require('express');
 const apiAiService = require('./apiAiService');
 const broadCast = require('./blogSubscribe');
+const fbCustom = require('./fbCustomFunction');
 
 module.exports = {
     FacebookAction : (sender, action, responseText, contexts, parameters)=>{
@@ -12,7 +13,7 @@ module.exports = {
                 break;
             
             case "MainmenuActivity":
-                // greetUserText(sender);
+                fbCustom.greetUserText(sender);
                 break;
             
             case "SubscriptionActivity":
