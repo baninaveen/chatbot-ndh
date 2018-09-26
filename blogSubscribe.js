@@ -118,7 +118,6 @@ module.exports = {
     },
     blogContent : (custom_label_id)=> {
         fetch('http://blog.nextdoorhub.com/wordpress/wp-json/wp/v2/posts/')
-        .then( r => r.json())
         .then(data => {
             console.log('Blog content', data[0]['title']['rendered']);
         })
