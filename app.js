@@ -92,7 +92,7 @@ function broadCastJob(){
 			  }       
 			}
 		  }
-		broadCast.broadcastContent(payload_broadcast, config.BLOG_SUBSCRIPTION_ID);
+		broadCast.broadcastSystemAPI(payload_broadcast, config.BLOG_SUBSCRIPTION_ID);
 	});
 }
 
