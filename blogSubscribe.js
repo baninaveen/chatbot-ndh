@@ -60,7 +60,7 @@ module.exports = {
         var messageData = { 
               messages:[
               {
-                text: text,//"This is Daily Horoscope notifications Broadcast Message",
+                text: text,//"This is Daily notifications Broadcast Message",
               }
              ]
     }
