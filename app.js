@@ -16,6 +16,13 @@ const FacebookServices = require('./FacebookServices');
 const aiService = require('./apiAiService');
 const fbResponse = require('./FbResponses');
 const schedule = require('node-schedule');
+const broadCast = require('./blogSubscribe');
+
+
+
+// Send Broadcast Message from CronJob
+broadCastJob();
+
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -59,10 +66,35 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 
 const sessionIds = new Map();
 
+function broadCastJob(){
+	var j = schedule.scheduleJob('* /1 * * * *', function(){
+		console.log('The answer to life, the universe, and everything!');
+		let payload_broadcast = {
+			"attachment":{
+			  "type":"template",
+			  "payload":{
+				"template_type":"generic",
+				"elements":[
+				   {
+					"title":"Welcome to Our Marketplace!",
+					"image_url":"https://www.facebook.com/jaspers.png",
+					"subtitle":"Fresh fruits and vegetables. Yum.",
+					"buttons":[
+					  {
+						"type":"web_url",
+						"url":"https://www.jaspersmarket.com",
+						"title":"View Website"
+					  }              
+					]      
+				  }
+				]
+			  }       
+			}
+		  }
+		broadCast.broadcastContent(payload_broadcast, config.BLOG_SUBSCRIPTION_ID);
+	});
+}
 
-var j = schedule.scheduleJob('* /5 * * * *', function(){
-	console.log('The answer to life, the universe, and everything!');
-  });
 
 // Index route
 app.get('/', function (req, res) {

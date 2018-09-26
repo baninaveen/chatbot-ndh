@@ -2,6 +2,7 @@ const config = require('./config');
 const FbResponse = require('./FbResponses');
 const express = require('express');
 const apiAiService = require('./apiAiService');
+const broadCast = require('./blogSubscribe');
 
 module.exports = {
     FacebookAction : (sender, action, responseText, contexts, parameters)=>{
@@ -33,6 +34,7 @@ module.exports = {
             
             case "SubscriptionActivitySubscribe":
                 FbResponse.sendTextMessage(sender, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right into your inbox");
+                broadCast.subscribeArticles(sender);
                 break;
     
             case "SubscriptionActivityUnsubscribe":
