@@ -108,6 +108,15 @@ app.get('/webhook/', function (req, res) {
  */
 app.post('/webhook/', function (req, res) {
 	var data = req.body;
+
+	const webhook_events = req.body.entry[0];
+
+	// Secondary Receiver is in control - listen on standby channel
+	if (webhook_events.standby) {
+		console.log('Success in secondary control');
+	}else{
+		console.log('error in secondary control');
+	}
 	console.log('Data:',JSON.stringify(data));
 
 	// Make sure this is a page subscription
