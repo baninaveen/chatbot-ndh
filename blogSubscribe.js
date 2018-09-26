@@ -92,6 +92,30 @@ module.exports = {
             }
         });
     },
+    unSubscribeArticles : (recipientId) =>{
+        request({
+            uri: 'https://graph.facebook.com/v2.11/1922289691160887/label',
+            qs: {
+                access_token: config.FB_PAGE_TOKEN
+            },
+            method: 'DELETE',
+            body: {user: recipientId},
+            json: true
+    
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var successTrue = body.success;
+    
+                if (successTrue == true) {
+                    console.log(recipientId, "You successfully unsubscribed to Articles");
+                } else {
+                    console.log(recipientId, "unsub Newsletter is not available now. Try again later");
+                }
+            } else {
+                console.error("Failed calling unsubcribe articles API", response.statusCode, response.statusMessage, body.error);
+            }
+        });
+    },
 
     blogContent : (customlabelId) => {
         request({

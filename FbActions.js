@@ -47,6 +47,7 @@ module.exports = {
                     }
                 ]
                 FbResponse.sendQuickReply(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'", unsub_replies)
+                unSubscribeArticles(sender);
                 break;
     
             default:
