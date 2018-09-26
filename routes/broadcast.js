@@ -19,6 +19,8 @@ router.get('/broadcast', ensureAuthenticated, (req, res) => {
 
 
 router.get('/broadcast', ensureAuthenticated, (req, res) => {
+    // let message = req.body.message;
+    // let news
     res.render('pages/broadcast-confirm');
 });
 
