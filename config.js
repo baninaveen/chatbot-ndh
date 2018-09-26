@@ -3,8 +3,10 @@ module.exports = {
     FB_VERIFY_TOKEN: 'ndh_chatbot',
     API_AI_CLIENT_ACCESS_TOKEN: '5a725d1112c746d7a72efb7a15f3e12a',
     FB_APP_SECRET: '56fd35311eceb90f1119b6944481822c',
+    FB_APP_ID: "251097972275735",
     SERVER_URL: "https://ndh-chatbot-facebook.herokuapp.com/",
     BLOG_SUBSCRIPTION_ID: "1922289691160887",
+    ADMIN_ID: "2021700781228161",
     isDefined : (obj) => {
         if (typeof obj == 'undefined') {
             return false;

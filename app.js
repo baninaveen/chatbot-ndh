@@ -16,8 +16,12 @@ const FacebookServices = require('./FacebookServices');
 const aiService = require('./apiAiService');
 const fbResponse = require('./FbResponses');
 const schedule = require('node-schedule');
-const broadCast = require('./blogSubscribe');
+const blogSubscribe = require('./blogSubscribe');
 const fbQuickReply = require('./fbQuickReplyAction');
+const passport = require('passport');
+const FacebookStrategy = require('passport-facebook').Strategy;
+const session = require('express-session');
+const broadcast = require('./routes/broadcast');
 
 
 // Send Broadcast Message from CronJob
@@ -51,8 +55,6 @@ app.use(bodyParser.json({
 // Set EJS Engine
 app.set('view engine', 'ejs');
 
-
-
 //serve static files in the public directory
 app.use(express.static('public'));
 
@@ -63,6 +65,39 @@ app.use(bodyParser.urlencoded({
 
 // Process application/json
 app.use(bodyParser.json())
+
+app.use(session(
+	{
+		secret: "nextdoorhub chatbot",
+		resave: true,
+		saveUninitialized: true
+	}
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+passport.serializeUser(function(profile, cb) {
+	cb(null, profile);
+});
+
+passport.deserializeUser(function(profile, cb) {
+	cb(null, profile);
+});
+
+// Facebook Passport Configuration 
+passport.use(new FacebookStrategy({
+		clientID: config.FB_APP_ID,
+		clientSecret: config.FB_APP_SECRET,
+		callbackURL: config.SERVER_URL + "auth/facebook/callback"	
+	},
+	function(accessToken, refreshToken, profile, cb) {
+		process.nextTick(function(){
+			return cb(null, profile);
+		});
+	}
+));
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	language: "en",
@@ -75,11 +110,17 @@ function broadCastJob(){
 	console.log('Broadcast Block');
 	var j = schedule.scheduleJob('*/2 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
-		broadCast.blogContent(config.BLOG_SUBSCRIPTION_ID);
-		// broadCast.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
+		blogSubscribe.blogContent(config.BLOG_SUBSCRIPTION_ID);
+		// blogSubscribe.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
 	});
 }
 
+app.use('/broadcast', broadcast);
+// Facebook Auth route
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'public_profile'}));
+
+app.get('/auth/facebook/callback',
+	passport.authenticate('facebook', {successRedirect: '/broadcast/broadcast', failureRedirect: '/broadcast'}));
 
 // Index route
 app.get('/', function (req, res) {
