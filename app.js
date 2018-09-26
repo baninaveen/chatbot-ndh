@@ -69,7 +69,7 @@ const sessionIds = new Map();
 
 function broadCastJob(){
 	console.log('Broadcast Block');
-	var j = schedule.scheduleJob('* /3 * * * *', function(){
+	var j = schedule.scheduleJob('*/2 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
 		
 		broadCast.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
