@@ -17,6 +17,7 @@ const aiService = require('./apiAiService');
 const fbResponse = require('./FbResponses');
 const schedule = require('node-schedule');
 const broadCast = require('./blogSubscribe');
+const fbQuickReply = require('./fbQuickReplyAction');
 
 
 
