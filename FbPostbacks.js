@@ -49,6 +49,9 @@ module.exports = {
                 FbResponse.sendQuickReply(senderID, "Would you like to subscribe to our newletter and Best Deals and Offer?", manage_replies);
                 break;
             
+            case "CONTACT_INFO":
+                FbResponse.sendTextMessage(senderID, "If you encounter any problem Please, mail at support@nextdoorhub.com");
+                break;
             default:
                 //unindentified payload
                 FbResponse.sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
