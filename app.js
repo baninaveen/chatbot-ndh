@@ -71,7 +71,7 @@ function broadCastJob(){
 	var j = schedule.scheduleJob('* /5 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
 		
-		broadCast.sendBroadcastTextMessage("Hello this is Braodcast Messages", config.BLOG_SUBSCRIPTION_ID);
+		broadCast.sendBroadcastTextMessage("Hello this is Broadcast Messages", config.BLOG_SUBSCRIPTION_ID);
 	});
 }
 
