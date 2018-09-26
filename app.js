@@ -70,7 +70,7 @@ const sessionIds = new Map();
 function broadCastJob(){
 	var j = schedule.scheduleJob('* /1 * * * *', function(){
 		console.log('The answer to life, the universe, and everything!');
-		let payload_broadcast = {
+		let payload_broadcast = [{
 			"attachment":{
 			  "type":"template",
 			  "payload":{
@@ -91,7 +91,7 @@ function broadCastJob(){
 				]
 			  }       
 			}
-		  }
+		  }]
 		broadCast.broadcastSystemAPI(payload_broadcast, config.BLOG_SUBSCRIPTION_ID);
 	});
 }
