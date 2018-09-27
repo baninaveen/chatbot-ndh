@@ -24,7 +24,7 @@ router.post('/broadcast', ensureAuthenticated, (req, res) => {
     req.session.message = message;
     req.session.user = req.user;
     console.log('Braodcast Req', req.user);
-    res.render('broadcast-confirm', {user: req.user, message: message})
+    res.render('pages/broadcast-confirm', {user: req.user, message: message})
 });
 
 
@@ -48,9 +48,9 @@ router.get('/broadcast-sent', ensureAuthenticated, (req, res) => {
 
     req.session.message = null;
     req.session.user = null;
-    res.render('broadcast-sent', {message: message, user: user});
+    res.render('pages/broadcast-sent', {message: message, user: user});
 
-    res.render('pages/broadcast-sent');
+    // res.render('pages/broadcast-sent');
 });
 
 
