@@ -38,7 +38,7 @@ router.get('/broadcast-send', ensureAuthenticated, (req, res) => {
     //     sender = allUsers[i].fb_id;
     //     fbService.sendTextMessage(sender, message);
     // }
-   res.redirect('/broadcast/pages/broadcast-sent');
+   res.redirect('/broadcast/broadcast-sent');
 });
 
 
