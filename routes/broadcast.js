@@ -23,11 +23,10 @@ router.get('/broadcast', ensureAuthenticated, (req, res) => {
 router.post('/broadcast', ensureAuthenticated, (req, res) => {
     let message = req.body.message;
     req.session.message = message;
-    req.session.user = req.user;
     console.log('User ID:', req.user.id);
     blogSubscribe.sendBroadcastTextMessage(message, config.BLOG_SUBSCRIPTION_ID);
     // console.log('Braodcast Req', req.user);
-    res.redirect('pages/broadcast-sent');
+    res.redirect('pages/sent', {user: req.user, message: message});
     // res.render('pages/broadcast-confirm', {user: req.user, message: message});
 });
 
