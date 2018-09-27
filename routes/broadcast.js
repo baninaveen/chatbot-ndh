@@ -1,6 +1,7 @@
 const config = require('../config');
 const express = require('express');
 const router = express.Router();
+const fbResponse = require('../FbResponses');
 
 
 router.get('/', (req, res) => {
@@ -19,13 +20,22 @@ router.get('/broadcast', ensureAuthenticated, (req, res) => {
 
 
 router.get('/broadcast', ensureAuthenticated, (req, res) => {
-    // let message = req.body.message;
-    // let news
-    res.render('pages/broadcast-confirm');
+    let message = req.body.message;
+    req.session.message = message;
+    console.log('Braodcast Req', req);
+    res.render('broadcast-confirm', {user: req.user, message: message})
 });
 
 
 router.get('/broadcast-send', ensureAuthenticated, (req, res) => {
+    let message = req.session.message;
+    // // let allUsers = req.session.users;
+
+    // let sender;
+    // for (let i=0; i < allUsers.length; i++ ) {
+    //     sender = allUsers[i].fb_id;
+    //     fbService.sendTextMessage(sender, message);
+    // }
    res.redirect('/broadcast/broadcast-sent');
 });
 
