@@ -14,14 +14,15 @@ router.get('/no-access', (req, res) => {
 });
 
 
-router.post('/broadcast', ensureAuthenticated, (req, res) => {
+router.get('/broadcast', ensureAuthenticated, (req, res) => {
     res.render('pages/broadcast', {user: req.user});
 });
 
 
-router.get('/broadcast', ensureAuthenticated, (req, res) => {
+router.post('/broadcast', ensureAuthenticated, (req, res) => {
     let message = req.body.message;
     req.session.message = message;
+    req.session.user = req.user;
     console.log('Braodcast Req', req.user);
     res.render('broadcast-confirm', {user: req.user, message: message})
 });
@@ -29,7 +30,8 @@ router.get('/broadcast', ensureAuthenticated, (req, res) => {
 
 router.get('/broadcast-send', ensureAuthenticated, (req, res) => {
     let message = req.session.message;
-    // // let allUsers = req.session.users;
+    let user = req.session.user;
+    fbResponse.sendTextMessage(user.id, message);
 
     // let sender;
     // for (let i=0; i < allUsers.length; i++ ) {
@@ -41,6 +43,13 @@ router.get('/broadcast-send', ensureAuthenticated, (req, res) => {
 
 
 router.get('/broadcast-sent', ensureAuthenticated, (req, res) => {
+    let message = req.session.message;
+    let user = req.session.user;
+
+    req.session.message = null;
+    req.session.user = null;
+    res.render('broadcast-sent', {message: message, user: user});
+
     res.render('pages/broadcast-sent');
 });
 
