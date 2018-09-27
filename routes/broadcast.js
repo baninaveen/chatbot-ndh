@@ -14,7 +14,7 @@ router.get('/no-access', (req, res) => {
 });
 
 
-router.get('/broadcast', ensureAuthenticated, (req, res) => {
+router.post('/broadcast', ensureAuthenticated, (req, res) => {
     res.render('pages/broadcast', {user: req.user});
 });
 
