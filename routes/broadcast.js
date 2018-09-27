@@ -24,7 +24,7 @@ router.post('/broadcast', ensureAuthenticated, (req, res) => {
     req.session.message = message;
     req.session.user = req.user;
     console.log('User ID:', req.user.id);
-    fbResponse.sendTextMessage(req.user.id, message);
+    fbResponse.sendTextMessage(config.SENDER_ID, message);
     // console.log('Braodcast Req', req.user);
     res.redirect('pages/broadcast-sent');
     // res.render('pages/broadcast-confirm', {user: req.user, message: message});

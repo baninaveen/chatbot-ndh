@@ -7,6 +7,7 @@ module.exports = {
     SERVER_URL: "https://ndh-chatbot-facebook.herokuapp.com/",
     BLOG_SUBSCRIPTION_ID: "1922289691160887",
     ADMIN_ID: "1770141073054491",
+    SENDER_ID: "2081330095516773",
     isDefined : (obj) => {
         if (typeof obj == 'undefined') {
             return false;
