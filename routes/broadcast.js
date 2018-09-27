@@ -2,6 +2,7 @@ const config = require('../config');
 const express = require('express');
 const router = express.Router();
 const fbResponse = require('../FbResponses');
+const blogSubscribe =  require('../blogSubscribe');
 
 
 router.get('/', (req, res) => {
@@ -24,7 +25,7 @@ router.post('/broadcast', ensureAuthenticated, (req, res) => {
     req.session.message = message;
     req.session.user = req.user;
     console.log('User ID:', req.user.id);
-    fbResponse.sendTextMessage(config.SENDER_ID, message);
+    blogSubscribe.sendBroadcastTextMessage(message, config.BLOG_SUBSCRIPTION_ID);
     // console.log('Braodcast Req', req.user);
     res.redirect('pages/broadcast-sent');
     // res.render('pages/broadcast-confirm', {user: req.user, message: message});
