@@ -15,6 +15,23 @@ module.exports = {
             case "MainmenuActivity":
                 fbCustom.greetUserText(sender);
                 break;
+
+            case "SubscribeActivity":
+                FbResponse.sendTextMessage(sender, "Thank you for subscribing to our Newletter. We will send best Deals and Offers right into your inbox");
+                broadCast.subscribeArticles(sender);
+                break;
+                
+            case "UnsubcribeActivity":
+                let unsub_reply = [
+                    {
+                    "content_type":"text",
+                    "title":"Subscribe",
+                    "payload": "SUBSCRIBE_BLOG"
+                    }
+                ]
+                FbResponse.sendQuickReply(sender, "Sorry for inconvenience. You can always Subscribe back to avail best deals and offers from NextDoorHub. Simply type 'Subscribe'", unsub_reply)
+                broadCast.unSubscribeArticles(sender);
+                break;    
             
             case "SubscriptionActivity":
                 let subscribe_replies = [

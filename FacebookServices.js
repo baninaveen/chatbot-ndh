@@ -169,6 +169,22 @@ module.exports = {
             "number %d", watermark, sequenceNumber);
     },
 
+    // receivedStandby : (event) => {
+    //     const psid = event.sender.id;
+    //     const message = event.message;
+  
+    //     if (message && message.quick_reply && message.quick_reply.payload == 'take_from_inbox') {
+    //       // quick reply to take from Page inbox was clicked          
+    //       text = 'The Primary Receiver is taking control back. \n\n Tap "Pass to Inbox" to pass thread control to the Page Inbox.';
+    //       title = 'Pass to Inbox';
+    //       payload = 'pass_to_inbox';
+          
+    //       sendQuickReply(psid, text, title, payload);
+    //       HandoverProtocol.takeThreadControl(psid);
+    //     }
+  
+    //   },
+
     /*
     * Account Link Event
     *

@@ -22,6 +22,7 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const broadcast = require('./routes/broadcast');
+const HandoverProtocol = require('./services/handoverProtocol');
 
 
 // Send Broadcast Message from CronJob
@@ -149,14 +150,6 @@ app.get('/webhook/', function (req, res) {
 app.post('/webhook/', function (req, res) {
 	var data = req.body;
 
-	const webhook_events = req.body.entry[0];
-
-	// Secondary Receiver is in control - listen on standby channel
-	if (webhook_events.standby) {
-		console.log('Success in secondary control');
-	}else{
-		console.log('error in secondary control');
-	}
 	console.log('Data:',JSON.stringify(data));
 
 	// Make sure this is a page subscription
@@ -182,6 +175,9 @@ app.post('/webhook/', function (req, res) {
 					FacebookServices.receivedMessageRead(messagingEvent);
 				} else if (messagingEvent.account_linking) {
 					FacebookServices.receivedAccountLink(messagingEvent);
+				// } else if (messagingEvent.standby) {
+				// 	console.log('Standby', messagingEvent);
+				// 	receivedStandby(messagingEvent);
 				} else {
 					console.log("Webhook received unknown messagingEvent: ", messagingEvent);
 				}
@@ -193,6 +189,22 @@ app.post('/webhook/', function (req, res) {
 		res.sendStatus(200);
 	}
 });
+
+// function receivedStandby(event) {
+// 	const psid = event.sender.id;
+// 	const message = event.message;
+
+// 	if (message && message.quick_reply && message.quick_reply.payload == 'take_from_inbox') {
+// 	  // quick reply to take from Page inbox was clicked          
+// 	  text = 'The Primary Receiver is taking control back. \n\n Tap "Pass to Inbox" to pass thread control to the Page Inbox.';
+// 	  title = 'Pass to Inbox';
+// 	  payload = 'pass_to_inbox';
+	  
+// 	  fbResponse.sendQuickReply(psid, text, title, payload);
+// 	  HandoverProtocol.takeThreadControl(psid);
+// 	}
+
+//   }
 
 function receivedMessage(event){
 	var senderID = event.sender.id;
